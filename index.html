@@ -1,207 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurova Interiors</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root{--black:#0b0b0b;--gold:#d4af37;--text:#eaeaea;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-body{background:var(--black);color:var(--text);} 
-header{background:#000;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(212,175,55,0.3);} 
-.logo{display:flex;align-items:center;gap:10px;}
-.logo img{height:50px;}
-.logo span{color:var(--gold);font-weight:600;font-size:18px;}
-nav{display:flex;}
-nav a{color:var(--gold);margin:0 12px;text-decoration:none;font-size:14px;}
-.menu-toggle{display:none;font-size:24px;color:var(--gold);cursor:pointer;}
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;}
-.hero h2{font-size:42px;color:var(--gold);} 
-section{padding:60px 40px;}
-.section-title{text-align:center;font-size:28px;color:var(--gold);margin-bottom:40px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.card{background:#111;padding:15px;border-radius:10px;border:1px solid rgba(212,175,55,0.2);} 
-.card img{width:100%;border-radius:10px;margin-bottom:10px;}
-.gallery img{width:100%;border-radius:10px;}
-.team img{width:100%;border-radius:50%;height:180px;object-fit:cover;border:3px solid var(--gold);} 
-.map iframe{width:100%;height:300px;border:0;border-radius:10px;} 
-button{background:var(--gold);color:#000;border:none;padding:10px 18px;border-radius:20px;cursor:pointer;} 
-footer{background:#000;color:var(--gold);text-align:center;padding:15px;} 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurova Interiors | Modern Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0b0b0b;
+            --gold: #d4af37;
+            --text: #eaeaea;
+            --dark-grey: #111;
+        }
 
-/* Responsive */
-@media(max-width:768px){
-nav{display:none;flex-direction:column;background:#000;position:absolute;top:70px;right:0;width:200px;padding:10px;}
-nav.active{display:flex;}
-.menu-toggle{display:block;}
-.hero h2{font-size:30px;}
-}
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;z-index:2000;}
-.lightbox img{max-width:90%;max-height:90%;border-radius:10px;}
-.lightbox.active{display:flex;cursor:pointer;}
-</style>
-<script>
-function toggleMenu(){
- document.getElementById('nav').classList.toggle('active');
-}
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img { height: 45px; }
+
+        .logo span {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: var(--gold);
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: #fff; }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        /* --- Shared Layouts --- */
+        section { padding: 60px 5%; }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--gold);
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--dark-grey);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .flex-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .flex-split img { width: 100%; border-radius: 10px; }
+
+        button {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        button:hover { transform: scale(1.05); }
+
+        /* --- Footer & Map --- */
+        footer { background: #000; color: var(--gold); text-align: center; padding: 30px; }
+        
+        .map-contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        iframe { border-radius: 10px; width: 100%; }
+
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; 
+            justify-content: center; align-items: center; z-index: 2000;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 80%; border: 2px solid var(--gold); }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .flex-split, .map-contact-grid { grid-template-columns: 1fr; }
+            .hero { height: 60vh; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 10px 20px; }
+            .menu-toggle { display: block; }
+            
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #000;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                border-bottom: 2px solid var(--gold);
+            }
+
+            nav.active { display: flex; }
+            nav a { margin: 15px 0; font-size: 18px; }
+            section { padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-<div class="logo">
-<img src="images/logo-BlackBG.jpeg" alt="Aurova Logo">
-<span>AUROVA INTERIOR
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav id="nav">
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
-<a href="#team">Team</a>
-<a href="#contact">Contact</a>
-</nav>
+    <div class="logo">
+        <img src="images/logo-BlackBG.jpeg" alt="Aurova Logo">
+        <span>AUROVA INTERIOR</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        <a href="#team" onclick="toggleMenu()">Team</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </nav>
 </header>
 
 <section class="hero">
-<div>
-<h2>Modern Luxury Interior Design 
-<br> You Dream We Build!</h2>
-<br>
-<button onclick="document.getElementById('contact').scrollIntoView()">Get Consultation</button>
-</div>
+    <div>
+        <h2>Modern Luxury Interior Design<br>You Dream, We Build!</h2>
+        <button onclick="document.getElementById('contact').scrollIntoView()">Get Free Consultation</button>
+    </div>
 </section>
 
 <section id="about">
-<h2 class="section-title">Who We Are</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;">
-<div>
-<img src="images/photo-1600210492493-0946911123ea.jpeg" style="width:100%;border-radius:10px;">
-</div>
-<div>
-<p>
-Aurova Interiors is a modern interior design studio delivering premium solutions for both residential and commercial spaces. We specialize in creating stylish, functional, and elegant environments tailored to contemporary lifestyles. From luxurious home interiors to efficient and aesthetic office and commercial designs, our approach blends creativity, space optimization, and modern design trends. We provide complete end-to-end solutions — from concept and 3D visualization to execution — ensuring every space reflects sophistication, comfort, and purpose.
-</p>
-</div>
-</div>
+    <h2 class="section-title">Who We Are</h2>
+    <div class="flex-split">
+        <img src="images/photo-1600210492493-0946911123ea.jpeg" alt="Modern living room">
+        <div>
+            <p>Aurova Interiors is a modern interior design studio delivering premium solutions for both residential and commercial spaces. We specialize in creating stylish, functional, and elegant environments tailored to contemporary lifestyles.</p>
+            <br>
+            <p>From 3D visualization to final execution, our approach blends creativity with space optimization to reflect sophistication and comfort.</p>
+        </div>
+    </div>
 </section>
 
-<section id="services">
-<h2 class="section-title">Our Services</h2>
-<div class="grid">
-<div class="card">
-<img src="images/photo-1615873968403-89e068629265.jpeg">
-<h3>Home Interiors</h3>
-<p>We design modern, luxurious, and highly functional home interiors that reflect your personality while maximizing comfort, aesthetics, and space efficiency.</p>
-</div>
-<div class="card">
-<img src="images/photo-1497366216548-37526070297c.jpeg">
-<h3>Office Design</h3>
-<p>Our commercial designs focus on productivity, brand identity, and modern work culture, creating inspiring office environments that enhance performance.</p>
-</div>
-<div class="card">
-<img src="images/photo-1503387762-592deb58ef4e.jpeg">
-<h3>3D Design</h3>
-<p>We provide realistic 3D visualizations so you can experience your space before execution, ensuring clarity, precision, and perfect design outcomes.</p>
-</div>
-<div class="card">
-<img src="images/photo-1600585152915-d208bec867a1.jpeg">
-<h3>Renovation</h3>
-<p>Transform your existing spaces with our renovation services, combining modern design upgrades with structural improvements for a fresh new look.</p>
-</div>
-</div>
-</section>
-
-<section>
-<h2 class="section-title">Why Choose Us</h2>
-<div class="grid">
-<div class="card">
-<img src="images/photo-1600210492493-0946911123ea.jpeg">
-<p>We deliver cutting-edge modern designs that combine luxury aesthetics with practical functionality, ensuring every space is both beautiful and efficient.</p>
-</div>
-<div class="card">
-<img src="images/photo-1600607687939-ce8a6c25118c.jpeg">
-<p>Our experienced team of designers and architects brings creativity, technical expertise, and attention to detail to every project we undertake.</p>
-</div>
-<div class="card">
-<img src="images/photo-1600585154340-be6161a56a0c.jpeg">
-<p>We provide customized solutions tailored to your needs, ensuring your space reflects your vision, lifestyle, and business identity.</p>
-</div>
-</div>
+<section id="services" style="background: #050505;">
+    <h2 class="section-title">Our Services</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="images/photo-1615873968403-89e068629265.jpeg" alt="Home">
+            <h3>Home Interiors</h3>
+            <p>Luxurious and functional designs that reflect your personality.</p>
+        </div>
+        <div class="card">
+            <img src="images/photo-1497366216548-37526070297c.jpeg" alt="Office">
+            <h3>Office Design</h3>
+            <p>Inspiring environments that enhance performance and brand identity.</p>
+        </div>
+        <div class="card">
+            <img src="images/photo-1503387762-592deb58ef4e.jpeg" alt="3D">
+            <h3>3D Design</h3>
+            <p>Experience your space virtually before we start building.</p>
+        </div>
+    </div>
 </section>
 
 <section id="gallery">
-<h2 class="section-title">Project Gallery</h2>
-<div class="grid gallery">
-<img src="images/photo-1618221195710-dd6b41faaea6.jpeg">
-<img src="images/photo-1617093727343-374698b1b08d.jpeg">
-<img src="images/photo-1616486029423-aaa4789e8c9a.jpeg">
-<img src="images/photo-1617806118233-18e1de247200.jpeg">
-<img src="images/photo-1615874959474-d609969a20ed.jpeg">
-<img src="images/photo-1613545325278-f24b0cae1224.jpeg">
-</div>
-
-<div style="margin-top:40px;text-align:center;">
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/2Vv-BfVoq4g" title="Interior Design Video" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe>
-</div>
+    <h2 class="section-title">Project Gallery</h2>
+    <div class="grid gallery">
+        <img src="images/photo-1618221195710-dd6b41faaea6.jpeg" class="thumb" style="width:100%; border-radius:10px; cursor:pointer;">
+        <img src="images/photo-1617093727343-374698b1b08d.jpeg" class="thumb" style="width:100%; border-radius:10px; cursor:pointer;">
+        <img src="images/photo-1616486029423-aaa4789e8c9a.jpeg" class="thumb" style="width:100%; border-radius:10px; cursor:pointer;">
+    </div>
+    
+    <div style="margin-top:40px;">
+        <iframe height="400" src="https://www.youtube.com/embed/2Vv-BfVoq4g" title="Interior Design Video" frameborder="0" allowfullscreen></iframe>
+    </div>
 </section>
 
 <section id="team">
-<h2 class="section-title">Our Team</h2>
-<div class="grid">
-<div class="card"><img src="images/JUTHI.jpeg"><h3>Chief Designer & Architect</h3></div>
-<div class="card"><img src="images/PULAK.jpeg"><h3>Chief Operating Officer(COO)</h3></div>
-<div class="card"><img src="images/Team.png"><h3>The Team</h3></div>
-</div>
+    <h2 class="section-title">Our Leadership</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="images/JUTHI.jpeg" style="border-radius: 50%; height:150px; width:150px; margin: 0 auto 15px auto;">
+            <h3>Juthi</h3>
+            <p>Chief Designer & Architect</p>
+        </div>
+        <div class="card">
+            <img src="images/PULAK.jpeg" style="border-radius: 50%; height:150px; width:150px; margin: 0 auto 15px auto;">
+            <h3>Pulak</h3>
+            <p>Chief Operating Officer (COO)</p>
+        </div>
+    </div>
 </section>
 
-<section style="display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:60px 40px;">
-<div class="map">
-<h2 class="section-title">Our Location</h2>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.0851405005697!2d87.3538081761604!3d23.529439978821806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f771fcffd3c9a3%3A0xea2060d812f4e6b1!2sAurova%20Interiors!5e0!3m2!1sen!2sin!4v1774751987386!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-<div id="contact">
-<h2 class="section-title">Contact Us</h2>
-<p style="margin-bottom:15px;">
-<strong>Reg. Office :</strong> Jemua, Durgapur<br>
-<strong>Branch :</strong> Ashiyana Society, Shankarpur, Bidhan Nagar, Durgapur, WB
-</p>
-<p style="font-size:30px;color:var(--gold);font-weight:600;">
-📞 +91 9933-89-8080
-</p>
-
-<p style="margin-bottom:15px;">
-<strong>Email: </strong>  aurovainteriors@gmail.com</p>
-</div>
+<section id="contact" style="background: #050505;">
+    <div class="map-contact-grid">
+        <div class="map">
+            <h2 class="section-title" style="text-align: left;">Our Location</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5!2d87.3!3d23.5!" height="350" loading="lazy"></iframe>
+        </div>
+        <div>
+            <h2 class="section-title" style="text-align: left;">Contact Us</h2>
+            <p><strong>Reg. Office:</strong> Jemua, Durgapur</p>
+            <p><strong>Branch:</strong> Ashiyana Society, Shankarpur, Durgapur</p>
+            <br>
+            <p style="font-size:24px; color:var(--gold); font-weight:600;">📞 +91 9933-89-8080</p>
+            <p>✉️ aurovainteriors@gmail.com</p>
+        </div>
+    </div>
 </section>
 
 <footer>
-<p>© 2026 Aurova Interiors | Modern Living Spaces</p>
-<div style="margin-top:10px;">
-<a href="#" style="color:var(--gold);margin:0 10px;font-size:20px;text-decoration:none;">🔵</a>
-<a href="#" style="color:var(--gold);margin:0 10px;font-size:20px;text-decoration:none;">🐦</a>
-<a href="#" style="color:var(--gold);margin:0 10px;font-size:20px;text-decoration:none;">📸</a>
-</div>
+    <p>© 2026 Aurova Interiors | Modern Living Spaces</p>
 </footer>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-<img id="lightbox-img" src="">
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+    <img id="lightbox-img" src="">
 </div>
 
 <script>
-const images = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+    function toggleMenu() {
+        const nav = document.getElementById('nav');
+        if (window.innerWidth <= 768) {
+            nav.classList.toggle('active');
+        }
+    }
 
-images.forEach(img => {
-  img.addEventListener('click', () => {
-    lightbox.classList.add('active');
-    lightboxImg.src = img.src;
-  });
-});
+    // Lightbox Logic
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
 
-function closeLightbox(){
-  lightbox.classList.remove('active');
-}
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        });
+    });
 </script>
+
 </body>
 </html>
